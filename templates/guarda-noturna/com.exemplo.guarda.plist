@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  macOS: agenda o guarda para 03:00, todo dia.
+
+  1. Troque [PLACEHOLDER] pelo caminho absoluto do seu guarda-noturna.sh
+  2. Troque o Label por algo seu (convenção: dominio.invertido.nome)
+  3. Salve em ~/Library/LaunchAgents/<Label>.plist
+  4. Carregue:   launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/<Label>.plist
+     Confira:    launchctl print gui/$(id -u)/<Label>
+     Descarregue: launchctl bootout gui/$(id -u)/<Label>
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.exemplo.guarda</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>[PLACEHOLDER: /caminho/absoluto/do/projeto/.guarda/guarda-noturna.sh]</string>
+  </array>
+
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key><integer>3</integer>
+    <key>Minute</key><integer>0</integer>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <false/>
+
+  <key>StandardOutPath</key>
+  <string>[PLACEHOLDER: /caminho/do/projeto/.guarda/logs/launchd.out.log]</string>
+  <key>StandardErrorPath</key>
+  <string>[PLACEHOLDER: /caminho/do/projeto/.guarda/logs/launchd.err.log]</string>
+
+  <key>ProcessType</key>
+  <string>Background</string>
+</dict>
+</plist>

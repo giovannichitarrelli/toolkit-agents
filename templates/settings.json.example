@@ -1,0 +1,56 @@
+{
+  "_comentario": [
+    "Copie para ~/.claude/settings.json e ajuste. Remova as chaves _comentario.",
+    "permissions.allow: só leitura. Nunca libere rtk proxy nem git push.",
+    "model: o tier alto da sua conta — os agentes declaram o deles no frontmatter."
+  ],
+  "permissions": {
+    "allow": [
+      "Read",
+      "Edit",
+      "Write",
+      "Grep",
+      "Glob",
+      "WebFetch",
+      "WebSearch",
+      "NotebookEdit",
+      "Bash(rtk read:*)",
+      "Bash(rtk grep:*)",
+      "Bash(rtk ls:*)",
+      "Bash(rtk find:*)",
+      "Bash(rtk wc:*)",
+      "Bash(rtk du:*)",
+      "Bash(rtk tree:*)",
+      "Bash(rtk git status:*)",
+      "Bash(rtk git diff:*)",
+      "Bash(rtk git log:*)",
+      "Bash(rtk git show:*)",
+      "Bash(rtk tsc:*)",
+      "Bash(rtk lint:*)",
+      "Bash(rtk gain:*)",
+      "Bash(rtk discover:*)"
+    ],
+    "defaultMode": "auto"
+  },
+  "model": "[PLACEHOLDER: id do modelo, ex. claude-opus-5]",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[PLACEHOLDER: ~/.claude/hooks/rtk-rewrite.sh]"
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true,
+    "context7@claude-plugins-official": true
+  },
+  "skillOverrides": {
+    "_comentario": "off esconde a skill do modelo. Desligue o que atrapalha o SEU fluxo, não por padrão."
+  }
+}

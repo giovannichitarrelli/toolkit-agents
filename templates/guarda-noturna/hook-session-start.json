@@ -1,0 +1,21 @@
+{
+  "_comentario": [
+    "Cole o bloco `hooks` no .claude/settings.local.json do projeto.",
+    "Verde não imprime nada — custo zero de contexto.",
+    "Vermelho abre a primeira sessão do dia com o aviso.",
+    "Troque [PLACEHOLDER] pelo caminho absoluto do relatório."
+  ],
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/head -1 [PLACEHOLDER: /caminho/do/projeto]/.guarda/ultimo-relatorio.md 2>/dev/null | /usr/bin/grep -q VERMELHO && printf '{\"systemMessage\":\"Guarda noturna: VERMELHO — leia .guarda/ultimo-relatorio.md antes de mexer em qualquer coisa\"}' || true",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

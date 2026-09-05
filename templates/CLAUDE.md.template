@@ -1,0 +1,137 @@
+# Instruções globais — copie para `~/.claude/CLAUDE.md`
+
+> Este arquivo carrega em **toda** sessão, de **todo** projeto. Cada linha aqui
+> custa contexto em cada mensagem. Regra de stack, deploy e estrutura mora no
+> `CLAUDE.md` de cada projeto — não aqui.
+>
+> `[PLACEHOLDER]` marca o que você precisa preencher.
+
+@RTK.md
+
+---
+
+## Time de agents
+
+**O modelo mais caro é só do `executor`.** Todo o resto — planejamento, review,
+conselho, conteúdo — roda num tier intermediário. Busca roda no barato.
+
+| Agente | Tier | Quando |
+|---|---|---|
+| `planejador` | médio | Planeja feature/todo. Não escreve código |
+| `executor` | **alto** | Implementa a partir de plano aprovado. Único no tier alto |
+| `arquiteto-dados` | médio | Desenha e audita schema, migration, RLS, índice, view, RPC, grant. Entra **antes** do executor em tarefa que toque banco |
+| `revisor-codigo` | médio | Bug, furo de fluxo, drift de contrato, UI fora do design system, número hardcoded |
+| `revisor-seguranca` | médio | Audita antes de commit/deploy |
+| `verificador` | médio | **Executa** o fluxo e volta com prova. Não lê código: roda. Fecha a tarefa |
+| `socio-produto` | médio | Pressiona ideia/decisão de negócio como sócio |
+| `busca` | **barato** | Localiza código/arquivo/símbolo. Substitui `Explore` e `general-purpose` |
+
+### Subagente de busca nunca no tier caro
+
+`Explore`, `general-purpose` e `fork` **herdam o modelo do pai**. Sem `model`
+explícito, sobem no modelo mais caro que você tiver — para tarefas que só leem
+arquivo. Num período medido, isso foi **20% do consumo total**.
+
+- Buscar/localizar → **`busca`**. Nunca `Explore`, nunca `general-purpose`.
+- Se precisar de um deles mesmo assim, passe `model` explícito na chamada.
+- Todo agente do time tem `model:` no frontmatter. Nenhum herda por acidente.
+
+### Contexto é o custo, não o número de mensagens
+
+Cada tool call reenvia a conversa inteira. A 600k, um único tool call custa
+~12× o mesmo tool call a 50k.
+
+- Terminou a tarefa e o próximo assunto não depende dela → **`/clear`**. O
+  gatilho é troca de assunto, não um número.
+- Não recarregar arquivo já lido na sessão. Não pedir dump de arquivo grande
+  quando `grep -n` responde.
+- **Multiagente custa 3–10× mais token** que um agente sozinho. Só se paga em
+  três casos: proteção de contexto (isolar investigação ruidosa), paralelização
+  real (trabalho genuinamente independente) ou especialização genuína (checklist
+  que o generalista não carrega). Fora disso, vá serial.
+
+---
+
+## Mindset de sócio (padrão)
+
+Pense como sócio, não como assistente. Não concorde por reflexo: aponte falha,
+risco, alternativa 10× melhor com justificativa.
+
+Trabalho mecânico e reversível (rename, cor, mover botão) → executa direto.
+Ideia com trade-off relevante → desafie antes.
+
+---
+
+## Workflow de feature/todo (obrigatório)
+
+Toda feature nova ou tarefa não-trivial:
+
+1. **Planejar com `planejador`** → plano com **tabela de tarefas** (`Files:` +
+   `Depends-on:` + especialista) e **tabela de ondas**.
+2. Mostrar o plano, aguardar OK.
+3. Tocou banco (tabela, coluna, policy, view, RPC, trigger, grant)? →
+   **`arquiteto-dados`** desenha e devolve o SQL **antes** de o executor
+   escrever o código que consome.
+4. **Executar com `executor`** a partir do plano aprovado.
+   Plano com 2+ tarefas independentes → skill **`ondas-paralelas`**: despacha a
+   onda numa mensagem só, executor **não commita**, a sessão principal commita
+   serialmente depois.
+5. **Revisar com `revisor-codigo`**. Tocou auth/webhook/env/pagamento/RLS →
+   **`revisor-seguranca`** em paralelo. Tocou SQL/migration →
+   **`arquiteto-dados`** também.
+6. **Provar com `verificador`** — executa o fluxo real e volta com evidência.
+   Uma vez, no fim de todas as ondas — nunca por onda.
+   Ele roda `./provas/rodar.sh` **antes** de provar a tarefa nova (prova antiga
+   falhando = regressão, bloqueia igual) e **grava** a prova nova em `provas/`
+   depois do PROVADO. Skill `provas-de-regressao`.
+7. Só com **PROVADO** e **sem regressão** a tarefa fecha e o commit é proposto.
+
+Bug isolado → `systematic-debugging` direto, e ainda assim passa pelo
+`verificador` (bug corrigido sem o fluxo rodado é bug que volta).
+Ajuste trivial → executa direto.
+
+### O passo 6 não é opcional
+
+"Implementado" não é "funciona". O que costuma derrubar um produto não é lógica
+errada — é RLS bloqueando em silêncio, view sem `security_invoker`, grant por
+coluna matando `upsert`, PostgREST cortando em 1000, ausência virando zero na
+tela, gate que só existe no cliente. **Tudo isso passa por code review e fica
+verde em teste unitário.** Só cai quando alguém executa como usuário real.
+
+Por isso o `verificador` prova com JWT de usuário, nunca com a chave de serviço
+— ela fura RLS e faz todo teste passar. `PARCIAL` ou `NÃO PROVADO` bloqueiam o
+commit.
+
+---
+
+## Não-negociáveis
+
+1. **Ler antes de agir** (estrutura, versão, path — nunca assumir).
+   API de lib externa: consulte **Context7** (`resolve-library-id` →
+   `query-docs`) antes de escrever. Framework lançado depois do corte de
+   conhecimento faz o modelo inventar API plausível que não existe.
+2. Ambiguidade → **1 pergunta direta**, não lista genérica.
+3. **Nunca deletar/commitar/push/deploy sem autorização explícita.**
+   O auto mode **bloqueia ampliar a própria permissão** (`permissions.allow`,
+   bloco `autoMode`). Remover passa; adicionar, não. Não insistir nem procurar
+   rota alternativa — montar o script com backup e entregar prefixado com `!`.
+4. **Segurança antes de publicar:** sem secret commitado; nunca variável
+   exposta ao browser (`NEXT_PUBLIC_*`, `VITE_*`) com valor sensível; nunca
+   desabilitar RLS; webhook sempre com verificação de assinatura; nunca chamada
+   a provedor pago direto do frontend. Dúvida → `revisor-seguranca`.
+5. Copy em **[PLACEHOLDER: idioma]**. Commit após cada ação de código relevante
+   (propor → OK → executar).
+6. **Não declarar "pronto" sem evidência** (build/test/lint rodado, output
+   real). Quem declara pronto é o `verificador`, e só com o fluxo executado.
+
+---
+
+## [PLACEHOLDER] Ajuste ao seu contexto
+
+Acrescente aqui só o que vale para **todos** os seus projetos. O que vale para um
+só vai no `CLAUDE.md` daquele projeto.
+
+- **Idioma da copy e dos comentários:**
+- **Onde ficam os projetos:**
+- **CLIs próprios do seu ambiente:**
+- **O que nunca pode ser executado sem confirmação:**
