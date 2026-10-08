@@ -118,3 +118,24 @@ Quais regras foram instaladas, quais foram puladas e por quê, contagem por regr
 ## Instalação parcial
 
 As três regras são independentes. Projeto grande → instale só `quality/max-lines` primeiro, um gate de cada vez.
+
+## Depois de medir: consertar (trabalho separado)
+
+Esta skill para no relatório. Quando a linha de base estiver medida e alguém
+pedir para **reduzir** as violações, o trabalho segue em sessão própria, com
+estes dois prompts — nesta ordem:
+
+1. **Arquivos acima do teto** → `prompts/vibe-coding-toolkit/09-file-size-refactor.md`.
+   Corta por responsabilidade (regra de negócio, UI, acesso a dados), nunca por
+   contagem de linha. Um arquivo por commit, teste e typecheck entre cada um.
+   Sem costura natural → diz isso e para, em vez de inventar abstração.
+2. **Pilha de `warn`** (console, import de camada) →
+   `prompts/vibe-coding-toolkit/02-eslint-warning-burndown.md`. Tem um gate de
+   decisão explícito antes da parte cara — a regra concentrada nos arquivos
+   mais arriscados.
+
+Fora do toolkit, os mesmos arquivos estão em
+`https://raw.githubusercontent.com/giovannichitarrelli/toolkit-agents/main/prompts/vibe-coding-toolkit/`.
+
+Cada regra que chega a zero volta para `error` no mesmo commit que a zerou —
+senão a contagem sobe de novo em silêncio.

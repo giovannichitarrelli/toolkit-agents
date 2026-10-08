@@ -62,8 +62,8 @@ Três coisas que a maioria das coleções não tem:
 ## <a id="comece-por-aqui"></a>🚀 Comece por aqui
 
 ```bash
-git clone https://github.com/giovannichitarrelli/toolkit-agentes
-cd toolkit-agentes
+git clone https://github.com/giovannichitarrelli/toolkit-agents
+cd toolkit-agents
 ./instalar.sh                 # 👀 prévia: mostra o que faria
 ./instalar.sh --aplicar       # 📦 copia agentes e skills para ~/.claude
 ```
@@ -74,6 +74,8 @@ Dentro do `claude`:
 /plugin marketplace add anthropics/claude-plugins-official
 /plugin install superpowers@claude-plugins-official
 /plugin install context7@claude-plugins-official
+/plugin install pr-review-toolkit@claude-plugins-official
+/plugin install hookify@claude-plugins-official
 ```
 
 Depois adapte os três arquivos de [`templates/`](templates/) à mão e reinicie a
@@ -206,6 +208,7 @@ quando usar cada peça, instalação e um prompt para começar.
 | | Doc | |
 |---|---|---|
 | 🛠️ | [Ferramentas avaliadas](docs/08-ferramentas.md) | As 14 do vibe-coding-toolkit: o que já está, o que instalar, o que pular |
+| 🪝 | [Hooks](docs/09-hooks.md) | Travas do hookify e hook que falha aberto |
 | 🧭 | [Nichos](docs/nichos/README.md) | O mapa "preciso de X → use Y" |
 
 ## <a id="prompts-prontos"></a>📋 Prompts prontos

@@ -19,13 +19,15 @@ em toda sessão, até quando não é usada.
 | 📚 | [Context7](https://github.com/soumatheusgomes/vibe-coding-toolkit/blob/main/docs/tools/12-context7.md) | ✅ | Obrigatório para Next 16, React 19, Tailwind v4, Flutter |
 | 🧩 | [Anthropic Skills](https://github.com/soumatheusgomes/vibe-coding-toolkit/blob/main/docs/tools/13-anthropics-skills.md) | ✅ | `frontend-design`, `webapp-testing`, `skill-creator`, `mcp-builder`, docx/pdf/pptx/xlsx |
 | 🚦 | [Quality gates ESLint/Biome](https://github.com/soumatheusgomes/vibe-coding-toolkit/blob/main/docs/tools/06-eslint-biome-quality-gates.md) | ✅ | Skill `quality-gates`. A divisão ESLint + Biome fica de fora até um projeto pedir velocidade de lint |
-| 🪝 | [Hooks — boas práticas](https://github.com/soumatheusgomes/vibe-coding-toolkit/blob/main/docs/tools/10-hooks-best-practices.md) | 🟢 | Leitura obrigatória antes de escrever hook novo. O `hook-io` com falha segura evita o hook que trava a sessão inteira |
+| 🪝 | [Hooks — boas práticas](https://github.com/soumatheusgomes/vibe-coding-toolkit/blob/main/docs/tools/10-hooks-best-practices.md) | ✅ | Aplicado: achou o bug do `null` no `aviso-contexto.py`. Regra em [🪝 Hooks](09-hooks.md) |
 | 🕸️ | [Graphify](https://github.com/soumatheusgomes/vibe-coding-toolkit/blob/main/docs/tools/07-graphify.md) | 🟢 | Grafo do repositório: "o que quebra se eu mudar isso" numa consulta. Paga-se em repo grande ou multi-repo — onde o `busca` hoje roda dezenas de grep |
 | 🔧 | [Chrome DevTools MCP](https://github.com/soumatheusgomes/vibe-coding-toolkit/blob/main/docs/tools/14-chrome-devtools-mcp.md) | 🟢 | Performance, rede e console ao vivo. Complementa o Claude in Chrome, que navega mas não perfila |
 | 🤖 | [agent-browser](https://github.com/soumatheusgomes/vibe-coding-toolkit/blob/main/docs/tools/11-agent-browser.md) | 🟡 | Navegador headless por árvore de acessibilidade. Bom para o `verificador` provar fluxo web sem depender do seu Chrome aberto |
-| 🦥 | [Ponytail](https://github.com/soumatheusgomes/vibe-coding-toolkit/blob/main/docs/tools/04-ponytail.md) | 🟡 | Escada "a solução mais simples que resolve". Combina com o `executor`, que tende a construir a mais |
+| 🦥 | [Ponytail](https://github.com/soumatheusgomes/vibe-coding-toolkit/blob/main/docs/tools/04-ponytail.md) | ✅ em teste | Escada "a solução mais simples que resolve". Combina com o `executor`, que tende a construir a mais. Instalado; reavaliar após uma semana |
 | 🗣️ | [Caveman](https://github.com/soumatheusgomes/vibe-coding-toolkit/blob/main/docs/tools/05-caveman.md) | ⚪ | Redundante com o `cost-reducer` do `CLAUDE.md`. Duas regras de estilo brigando é pior que nenhuma |
 | 🗂️ | [Obsidian como memória](https://github.com/soumatheusgomes/vibe-coding-toolkit/blob/main/docs/tools/08-obsidian-memory.md) | ⚪ | Terceira camada de memória sobre `MEMORY.md` + `claude-mem`. Só se você já vive no Obsidian |
+| 🔇 | `pr-review-toolkit` (plugin oficial) | ✅ | `silent-failure-hunter` e `pr-test-analyzer` no passo 5. Declaram `model: inherit` — dispare no tier médio |
+| 🚫 | `hookify` (plugin oficial) | ✅ | Não-negociáveis viram trava: RLS, segredo público, service role em prova, `.env` no git |
 | 🏗️ | aia-harness (`/aia-harness:init`) | ⚪ | Monta agentes, regras e hooks automaticamente — exatamente o que este toolkit faz à mão, com prova de execução |
 
 ## 📦 Instalar os recomendados
@@ -46,6 +48,9 @@ Dentro de uma sessão `claude`:
 
 /plugin marketplace add DietrichGebert/ponytail
 /plugin install ponytail@ponytail
+
+/plugin install pr-review-toolkit@claude-plugins-official
+/plugin install hookify@claude-plugins-official
 ```
 
 ## 🧭 Como testar uma ferramenta 🟡

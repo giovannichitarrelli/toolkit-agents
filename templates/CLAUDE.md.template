@@ -79,6 +79,9 @@ Toda feature nova ou tarefa não-trivial:
 5. **Revisar com `revisor-codigo`**. Tocou auth/webhook/env/pagamento/RLS →
    **`revisor-seguranca`** em paralelo. Tocou SQL/migration →
    **`arquiteto-dados`** também.
+   Diff com tratamento de erro, fallback ou `catch` → **`silent-failure-hunter`**
+   (plugin `pr-review-toolkit`) em paralelo; mudou teste → **`pr-test-analyzer`**.
+   Os dois declaram `model: inherit` — dispare com o modelo do tier médio.
 6. **Provar com `verificador`** — executa o fluxo real e volta com evidência.
    Uma vez, no fim de todas as ondas — nunca por onda.
    Ele roda `./provas/rodar.sh` **antes** de provar a tarefa nova (prova antiga

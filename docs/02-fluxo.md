@@ -8,7 +8,7 @@ Toda feature nova ou tarefa não-trivial:
 | 2 | Mostrar o plano, aguardar OK | você |
 | 3 | Tocou banco? Desenhar schema/RLS/migration **antes** do código que consome | `arquiteto-dados` |
 | 4 | Implementar a partir do plano aprovado | `executor` |
-| 5 | Revisar. Tocou auth/webhook/env/pagamento/RLS → segurança em paralelo | `revisor-codigo` + `revisor-seguranca` |
+| 5 | Revisar. Tocou auth/webhook/env/pagamento/RLS → segurança em paralelo. Tratamento de erro/fallback → caçador de falha silenciosa | `revisor-codigo` + `revisor-seguranca` + `silent-failure-hunter` |
 | 6 | **Provar** — executar o fluxo real e voltar com evidência | `verificador` |
 | 7 | Só com PROVADO e sem regressão a tarefa fecha e o commit é proposto | você |
 

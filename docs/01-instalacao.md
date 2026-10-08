@@ -15,6 +15,8 @@ Dentro de uma sessão `claude`:
 /plugin marketplace add anthropics/claude-plugins-official
 /plugin install superpowers@claude-plugins-official
 /plugin install context7@claude-plugins-official
+/plugin install pr-review-toolkit@claude-plugins-official
+/plugin install hookify@claude-plugins-official
 ```
 
 **`superpowers`** traz as skills de processo — `brainstorming`,
@@ -24,6 +26,16 @@ fluxo deste toolkit pressupõe elas instaladas.
 **`context7`** injeta documentação atual de biblioteca. Sem ele, o modelo inventa
 API plausível para qualquer framework lançado depois do corte de conhecimento.
 
+**`pr-review-toolkit`** traz o `silent-failure-hunter` e o `pr-test-analyzer`,
+que entram no passo 5 do fluxo ao lado do `revisor-codigo`.
+
+**`hookify`** transforma os não-negociáveis em trava. Copie as regras de
+[`templates/hookify/`](../templates/hookify/) para o `.claude/` de cada projeto —
+ver [🪝 Hooks](09-hooks.md).
+
+Opcional, para testar: **Ponytail** (`/plugin marketplace add DietrichGebert/ponytail`
+→ `/plugin install ponytail@ponytail`), a escada da solução mais simples.
+
 > Se você já tinha copiado skills do superpowers à mão para `~/.claude/skills/`,
 > apague as cópias antes de instalar o plugin — nomes duplicados conflitam, e a
 > cópia manual não recebe atualização.
@@ -31,8 +43,8 @@ API plausível para qualquer framework lançado depois do corte de conhecimento.
 ## 🧑‍🤝‍🧑 3. Agentes e skills
 
 ```bash
-git clone https://github.com/giovannichitarrelli/toolkit-agentes
-cd toolkit-agentes
+git clone https://github.com/giovannichitarrelli/toolkit-agents
+cd toolkit-agents
 ./instalar.sh              # prévia
 ./instalar.sh --aplicar    # copia, com backup do que já existir
 ```

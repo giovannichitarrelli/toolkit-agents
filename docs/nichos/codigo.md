@@ -11,7 +11,9 @@ O núcleo do toolkit. Tudo aqui serve ao fluxo planejar → executar → revisar
 | 🌊 | `ondas-paralelas` | skill (daqui) | Plano em ondas com arquivos disjuntos | ✅ |
 | 🧪 | `provas-de-regressao` | skill (daqui) | A prova do verificador vira suíte | ✅ |
 | 🚦 | `quality-gates` | skill (daqui) | Teto de linhas, sem console, fronteira de camada | ✅ |
-| 🦥 | [Ponytail](https://github.com/DietrichGebert/ponytail) | plugin | Para na solução mais simples que resolve | 🟡 |
+| 🦥 | [Ponytail](https://github.com/DietrichGebert/ponytail) | plugin | Para na solução mais simples que resolve | ✅ em teste |
+| 🔇 | `pr-review-toolkit` | plugin | Caça falha silenciosa e teste fraco no review | ✅ |
+| 🚫 | `hookify` + [regras](../../templates/hookify/) | plugin | Não-negociáveis viram trava automática | ✅ |
 
 ## 📚 Contexto e conhecimento
 
@@ -43,6 +45,8 @@ O núcleo do toolkit. Tudo aqui serve ao fluxo planejar → executar → revisar
 /plugin marketplace add anthropics/claude-plugins-official
 /plugin install superpowers@claude-plugins-official
 /plugin install context7@claude-plugins-official
+/plugin install pr-review-toolkit@claude-plugins-official
+/plugin install hookify@claude-plugins-official
 ```
 
 ```bash
