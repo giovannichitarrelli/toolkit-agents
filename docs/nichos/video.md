@@ -18,15 +18,27 @@ usa as duas:
 | | Ferramenta | Tipo | Para quê | Status |
 |---|---|---|---|---|
 | ⚛️ | [Remotion](https://www.remotion.dev/docs/ai/skills) | skill · programático | Vídeo em React. Composições, animação, áudio, render para MP4 | 🟢 recomendo |
-| 🧱 | [HyperFrames](https://github.com/heygen-com/hyperframes) (HeyGen) | skill · programático | Vídeo em HTML + CSS + GSAP. Mais leve que Remotion; o "Claude escreve e renderiza vídeo" | 🟢 recomendo |
+| 🧱 | [HyperFrames](https://github.com/heygen-com/hyperframes) (HeyGen) | plugin · programático | Vídeo em HTML + CSS + GSAP. Mais leve que Remotion; o "Claude escreve e renderiza vídeo" | ✅ instalado |
 | 🌀 | [Higgsfield](https://higgsfield.ai) | conector + CLI · generativo | Imagem e vídeo cinematográfico, presets de câmera | ✅ conectado |
 | 🎥 | `ai-video-generation` ([inference.sh](https://github.com/inference-sh/skills)) | skill · generativo | Veo 3.1, Seedance, Wan, OmniHuman (avatar), lipsync, upscale | ✅ instalada |
 | 🎙️ | [ElevenLabs](https://github.com/elevenlabs/elevenlabs-mcp) | conector · áudio | Narração, clonagem de voz, efeito sonoro, transcrição | ✅ conectado |
-| 👁️ | [claude-video](https://github.com/bradautomates/claude-video) (`/watch`) | plugin · análise | Assiste YouTube/arquivo: frames + transcrição, recorte por tempo, motor local ou Gemini | 🟢 recomendo |
+| 👁️ | [claude-video](https://github.com/bradautomates/claude-video) (`/watch`) | plugin · análise | Assiste YouTube/arquivo: frames + transcrição, recorte por tempo, motor local ou Gemini | ✅ instalado |
 
 **Remotion ou HyperFrames?** Escolha **um** por projeto. Remotion se o projeto
 já é React/Next ou o vídeo tem lógica (dados, lotes, variações). HyperFrames se
 você quer o caminho mais curto do prompt ao MP4, sem montar projeto React.
+
+### 🧩 Plugin ≠ skill
+
+Plugin é o pacote; skills são o que vem dentro. Os dois plugins de vídeo estão
+instalados com escopo **user** — valem em todos os projetos.
+
+| Plugin | Marketplace (repo) | Skills que traz |
+|---|---|---|
+| `hyperframes@hyperframes` | `heygen-com/hyperframes` | 21 skills para **criar** vídeo. Entrada obrigatória: `hyperframes:hyperframes` (roteia para o workflow certo). Outras: `hyperframes-cli`, `general-video`, `motion-graphics`, `slideshow`, `embedded-captions`, `product-launch-video`, `faceless-explainer`, `pr-to-video`, `talking-head-recut`… |
+| `watch@claude-video` | `bradautomates/claude-video` | 1 skill: `watch:watch` — **assistir** e analisar vídeo (frames + transcrição) |
+
+Não existe "skill HyperFrames" para instalar à parte: vem dentro do plugin.
 
 ## 🔁 O pipeline que funciona
 
@@ -58,9 +70,6 @@ npx create-video@latest --yes --blank meu-video && cd meu-video
 npx skills add remotion-dev/skills
 npm run dev          # preview ao lado da sessão do Claude
 
-# 🧱 HyperFrames
-npx skills add heygen-com/hyperframes
-
 # 🎥 Vídeo generativo via inference.sh (Veo, Seedance, Wan…)
 npx skills add inference-sh/skills
 
@@ -70,7 +79,12 @@ npx skills add higgsfield-ai/skills
 ```
 
 ```
-# 👁️ claude-video — dentro do claude; depois abra sessão nova e use /watch
+# Dentro do claude; depois abra sessão nova
+# 🧱 HyperFrames — 21 skills de criação de vídeo
+/plugin marketplace add heygen-com/hyperframes
+/plugin install hyperframes@hyperframes
+
+# 👁️ claude-video — /watch
 /plugin marketplace add bradautomates/claude-video
 /plugin install watch@claude-video
 ```
