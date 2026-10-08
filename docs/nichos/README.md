@@ -30,6 +30,10 @@ um prompt para começar.
 | ✨ Vídeo ou imagem gerados por IA | [Higgsfield / Veo](video.md) · [Nano Banana 2](imagem.md) |
 | 📱 Post, carrossel, peça de marca | [Canva](imagem.md) com template |
 | 🎙️ Narração, voz, efeito sonoro | [ElevenLabs](video.md#-instalação) |
+| 💬 Legendar vídeo de alguém falando | [`hyperframes:embedded-captions`](video.md#-plugin--skill) |
+| 📚 Vídeo explicativo a partir de texto, sem gravação | [`hyperframes:faceless-explainer`](video.md#-plugin--skill) |
+| 🔀 Vídeo a partir de um PR do GitHub | [`hyperframes:pr-to-video`](video.md#-plugin--skill) |
+| 🖼️ Apresentação animada / slideshow | [`hyperframes:slideshow`](video.md#-plugin--skill) |
 | 👁️ Claude assistir / resumir um vídeo | [claude-video `/watch`](video.md) |
 | ✍️ Artigo de blog | agente `seo-geo` → skill `humanizer` |
 | 📄 Proposta, contrato, deck, planilha | [Documentos](documentos.md) |
