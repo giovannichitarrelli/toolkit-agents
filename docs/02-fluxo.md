@@ -1,4 +1,4 @@
-# O fluxo
+# 🗺️ O fluxo
 
 Toda feature nova ou tarefa não-trivial:
 
@@ -15,20 +15,20 @@ Toda feature nova ou tarefa não-trivial:
 Bug isolado → `systematic-debugging` direto, e ainda assim passa pelo passo 6.
 Ajuste trivial → executa direto.
 
-## Por que o passo 3 vem antes do 4
+## 🗄️ Por que o passo 3 vem antes do 4
 
 Desenho de banco depois do código que o consome é retrabalho garantido. O
 `arquiteto-dados` devolve o SQL e o teste de RLS **como proposta** — quem aplica
 é o executor, a partir do plano aprovado. Ele projeta e reporta; não altera
 produção.
 
-## Por que o passo 6 não é opcional
+## ⚠️ Por que o passo 6 não é opcional
 
 Está em [03 — Provas de execução](03-provas.md), e é a razão de este toolkit
 existir. Resumo: os bugs que derrubam produto passam por code review e ficam
 verdes em teste unitário.
 
-## Quando o passo 4 vira ondas
+## 🌊 Quando o passo 4 vira ondas
 
 Plano com 2+ tarefas independentes → skill `ondas-paralelas`. As regras e o
 custo de multiagente estão em [04 — Ondas paralelas](04-ondas.md).
@@ -36,7 +36,7 @@ custo de multiagente estão em [04 — Ondas paralelas](04-ondas.md).
 O passo 6 roda **uma vez, no fim de todas as ondas** — nunca por onda. Prova por
 onda mede pedaço, e o que quebra costuma ser a junção.
 
-## O que cada agente entrega
+## 📬 O que cada agente entrega
 
 **`planejador`** — plano com veredito de desafio no topo (é a abordagem mais
 escalável? existe alternativa 10× melhor?), tabela de tarefas e critério de

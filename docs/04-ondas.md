@@ -1,10 +1,10 @@
-# Ondas paralelas
+# 🌊 Ondas paralelas
 
 Despacho serial é seguro e lento. Despachar tudo de uma vez é rápido e quebra de
 duas formas: dois agentes editam o mesmo arquivo e um sobrescreve o outro; dois
 agentes disputam o `git commit`.
 
-## Antes de tudo: isso se paga?
+## 💰 Antes de tudo: isso se paga?
 
 Multiagente custa **3–10× mais token** que um agente resolvendo sozinho
 ([Anthropic, jan/2026](https://claude.com/blog/building-multi-agent-systems-when-and-how-to-use-them)).
@@ -27,7 +27,7 @@ Fora deles, vá serial. Onda é despesa sem retorno.
 - trabalho sobre estado mutável compartilhado — se A precisa ler o que B escreve
   enquanto B escreve, é uma tarefa só fingindo ser duas
 
-## Marcação
+## 🏷️ Marcação
 
 Toda tarefa do plano precisa de dois campos:
 
@@ -38,7 +38,7 @@ Toda tarefa do plano precisa de dois campos:
 **Fail-safe:** campo ausente, caminho vago ou incerteza real → a tarefa depende de
 **tudo que veio antes**. O erro seguro (perder paralelismo) é o único permitido.
 
-## Formação de onda
+## 🧩 Formação de onda
 
 Duas tarefas entram na mesma onda **se e somente se as duas condições valerem**:
 
@@ -54,7 +54,7 @@ regressão, só ganho quando o plano realmente tem independência.
 Duas tarefas que colidem em arquivo por coincidência: **funda numa só** antes de
 montar as ondas. Evita até o commit extra.
 
-## Loop de execução
+## 🔁 Loop de execução
 
 1. Um brief por tarefa da onda
 2. **Todos os executores da onda numa única mensagem** — o único ponto onde o
@@ -67,7 +67,7 @@ montar as ondas. Evita até o commit extra.
 6. Revisores da onda juntos — seguro porque review é só leitura
 7. **Um** registro de progresso por onda, nunca um por tarefa
 
-## Válvula de escape
+## 🧯 Válvula de escape
 
 Duas tarefas que genuinamente precisam do mesmo arquivo: isole cada executor em
 `isolation: "worktree"`. Commitar sozinho volta a ser seguro, porque não existe
@@ -75,7 +75,7 @@ Duas tarefas que genuinamente precisam do mesmo arquivo: isole cada executor em
 
 Caro: disco e reinstalação de dependência por agente. Último recurso.
 
-## O que isto não muda
+## 📌 O que isto não muda
 
 Só a orquestração. O contrato de cada executor e revisor continua idêntico, e o
 passo de prova do fluxo continua obrigatório antes de qualquer commit.

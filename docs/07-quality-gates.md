@@ -1,6 +1,6 @@
-# Quality gates
+# 🚦 Quality gates
 
-## O princípio
+## 🧭 O princípio
 
 Regra nova **nunca** pula de "desligada" para "erro que trava a build". Isso ou
 trava o trabalho da noite pro dia, ou é desligada na primeira sexta-feira — e
@@ -12,7 +12,7 @@ sempre. Aperta aos poucos; nunca de surpresa.
 
 **Regra que nasce com zero violação já nasce em erro.** Não tem por que esperar.
 
-## Severidade sai da contagem, não da preferência
+## 📏 Severidade sai da contagem, não da preferência
 
 ```
 zero violações      → error
@@ -22,7 +22,7 @@ poucos infratores   → error, com os arquivos na opção `ignore`
 
 A contagem é a linha de base. A migração acaba quando chega a zero.
 
-## As três regras que a skill instala
+## 📜 As três regras que a skill instala
 
 | Regra | O que pega |
 |---|---|
@@ -33,7 +33,7 @@ A contagem é a linha de base. A migração acaba quando chega a zero.
 Sem módulo de dados no projeto → **remova a regra**, não invente uma fronteira
 que não existe.
 
-## Por que copiar as regras em vez de escrever
+## 📋 Por que copiar as regras em vez de escrever
 
 Regra de lint escrita na hora erra em silêncio: isenta arquivo de teste demais ou
 de menos, não sabe que um `index.ts` que só reexporta não tem tamanho que
@@ -44,7 +44,7 @@ Os arquivos vivem em
 [`skills/quality-gates/eslint/`](../skills/quality-gates/eslint/). Copie byte a
 byte. São CommonJS de propósito, para o ESLint carregar sem build step.
 
-## Dois modos de falha completamente silenciosos
+## 🔇 Dois modos de falha completamente silenciosos
 
 1. **Ordem dos blocos.** Um bloco que desliga uma regra precisa vir **depois** do
    que a liga. Em flat config, para um arquivo casado pelos dois, o último vence
@@ -53,7 +53,7 @@ byte. São CommonJS de propósito, para o ESLint carregar sem build step.
    `from` e **não** isenta um importador. Para isentar importador, estreite o
    `target`.
 
-## Proibições
+## ⛔ Proibições
 
 - **Não conserte violação durante a instalação.** Instalar o gate e medir o que
   ele pega é o trabalho inteiro. Refatorar é trabalho separado, com review
@@ -62,7 +62,7 @@ byte. São CommonJS de propósito, para o ESLint carregar sem build step.
 - **Não ligue formatador** numa base que nunca passou por um. A primeira rodada
   gera milhares de linhas de diff sem relação com bug, e atrapalha o review
 
-## Fora do JS/TS
+## 🌐 Fora do JS/TS
 
 O princípio vale igual. Num projeto Dart, `flutter analyze` sai com código 1 em
 qualquer issue — inclusive `info`. Duas saídas honestas: limpar a dívida, ou

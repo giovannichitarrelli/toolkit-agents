@@ -1,11 +1,11 @@
-# Visão geral
+# 🔭 Visão geral
 
 Cada peça daqui existe porque evitou um problema real pelo menos uma vez. Nada
 foi adicionado porque parecia legal. Se você só for ler uma página, leia esta —
 os documentos seguintes fazem sentido depois que você entende como as peças se
 encaixam.
 
-## 1. Orquestração, não implementação solo
+## 🎼 1. Orquestração, não implementação solo
 
 A sessão principal tem um trabalho só: entender o problema, decidir, coordenar.
 Ela não escreve código de produção com as próprias mãos.
@@ -24,7 +24,7 @@ O contraponto importa: um agente para um domínio que o seu projeto não tem é
 peso morto na tabela de roteamento. Nove agentes cobrindo o que existe valem
 mais que cem cobrindo o que não existe.
 
-## 2. Tier de modelo é decisão, nunca herança
+## 🎚️ 2. Tier de modelo é decisão, nunca herança
 
 Todo despacho declara em qual tier de modelo roda. Nenhum herda por acidente.
 
@@ -36,7 +36,7 @@ Isso não é preciosismo. `Explore`, `general-purpose` e `fork` **herdam o model
 do pai**: sem `model` explícito, sobem no mais caro que você tiver, para tarefas
 que só leem arquivo. Num período medido, isso foi **20% do consumo total**.
 
-## 3. Planejar, executar, revisar — e então **provar**
+## ✅ 3. Planejar, executar, revisar — e então **provar**
 
 Código é a última etapa, não a primeira. Deixado por conta própria, um agente
 interpreta o pedido do jeito mais óbvio e só descobre que construiu a coisa
@@ -57,7 +57,7 @@ fura RLS e faz todo teste passar.
 
 Detalhe em [03 — Provas de execução](03-provas.md).
 
-## 4. A prova não se joga fora
+## 🧪 4. A prova não se joga fora
 
 O verificador prova que o fluxo funciona **hoje**. Dois meses depois alguém altera
 uma policy, quebra aquele fluxo, e ninguém roda aquela prova de novo — porque a
@@ -71,7 +71,7 @@ O ganho é que a suíte é feita do teste que **pega** a classe de bug certa —
 banco real, JWT real, RLS de verdade. Uma suíte de mocks ficaria verde nos seis
 casos acima.
 
-## 5. Paralelismo com duas condições, não com otimismo
+## 🌊 5. Paralelismo com duas condições, não com otimismo
 
 Despacho serial é seguro e lento. Despachar tudo de uma vez é rápido e quebra de
 duas formas: dois agentes editam o mesmo arquivo e um sobrescreve o outro; dois
@@ -90,7 +90,7 @@ especialização genuína. Fora deles, onda é despesa sem retorno.
 
 [04 — Ondas paralelas](04-ondas.md).
 
-## 6. Contexto é o custo
+## 💸 6. Contexto é o custo
 
 Cada tool call reenvia a conversa inteira. A 600k de contexto, um único tool call
 custa cerca de **12×** o mesmo tool call a 50k.
@@ -102,7 +102,7 @@ devolve versão enxuta de comando de leitura.
 
 [05 — Custo](05-custo.md).
 
-## 7. Gate aperta aos poucos, nunca de surpresa
+## 🚦 7. Gate aperta aos poucos, nunca de surpresa
 
 Regra nova de lint jamais pula de "desligada" para "erro que trava a build".
 Isso ou trava o trabalho da noite pro dia, ou é desligada na primeira sexta-feira
@@ -115,7 +115,7 @@ Regra que nasce com zero violação já nasce em erro. Não tem por que esperar.
 
 [07 — Quality gates](07-quality-gates.md).
 
-## 8. O worker que não gasta token
+## 🌙 8. O worker que não gasta token
 
 Um cron local roda de madrugada os gates que o projeto **já tem** e deixa um
 relatório. Verde não imprime nada. Vermelho abre a primeira sessão do dia com o
@@ -128,7 +128,7 @@ o diagnóstico do que ficou vermelho.
 
 ---
 
-## O que este toolkit deliberadamente não tem
+## 🚫 O que este toolkit deliberadamente não tem
 
 - **Roster de 100+ agentes.** Número não é capacidade. Roteamento automático com
   89% de acerto significa 11% de despacho errado, e o custo de descobrir qual.

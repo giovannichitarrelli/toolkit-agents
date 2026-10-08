@@ -1,13 +1,13 @@
-# Instalação
+# 📦 Instalação
 
-## 1. Claude Code
+## 🤖 1. Claude Code
 
 ```bash
 npm install -g @anthropic-ai/claude-code
 claude --version
 ```
 
-## 2. Plugins
+## 🔌 2. Plugins
 
 Dentro de uma sessão `claude`:
 
@@ -28,7 +28,7 @@ API plausível para qualquer framework lançado depois do corte de conhecimento.
 > apague as cópias antes de instalar o plugin — nomes duplicados conflitam, e a
 > cópia manual não recebe atualização.
 
-## 3. Agentes e skills
+## 🧑‍🤝‍🧑 3. Agentes e skills
 
 ```bash
 git clone https://github.com/giovannichitarrelli/toolkit-agentes
@@ -40,7 +40,7 @@ cd toolkit-agentes
 O instalador é idempotente e **não toca** em `settings.json`, `CLAUDE.md` nem
 `RTK.md`. Esses são seus.
 
-## 4. Os três arquivos que você adapta à mão
+## ✍️ 4. Os três arquivos que você adapta à mão
 
 | Template | Vai para | O que ajustar |
 |---|---|---|
@@ -50,7 +50,7 @@ O instalador é idempotente e **não toca** em `settings.json`, `CLAUDE.md` nem
 
 **Não copie por cima** de configuração que já existe — leia e junte.
 
-## 5. Guarda noturna (opcional, por projeto)
+## 🌙 5. Guarda noturna (opcional, por projeto)
 
 ```bash
 mkdir -p <projeto>/.guarda
@@ -63,12 +63,12 @@ descubra com `cat package.json`, não de memória. Depois agende com o plist
 
 Detalhe em [06 — Guarda noturna](06-guarda-noturna.md).
 
-## 6. Reinicie
+## 🔄 6. Reinicie
 
 Agentes, settings e hooks são lidos no start da sessão. Plugins entram na hora;
 o resto, não.
 
-## Conferir
+## 🔍 Conferir
 
 ```bash
 ls ~/.claude/agents/       # 9 arquivos .md

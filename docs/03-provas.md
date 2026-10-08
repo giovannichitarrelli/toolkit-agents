@@ -1,9 +1,9 @@
-# Provas de execução
+# 🧪 Provas de execução
 
 A parte deste toolkit que não existe em outros lugares. Se você adotar uma coisa
 só daqui, adote esta.
 
-## O problema
+## 🧨 O problema
 
 Code review lê código. Teste unitário roda código isolado, com dependência
 falsa. Nenhum dos dois toca o sistema.
@@ -21,7 +21,7 @@ Estas seis falhas passam pelos dois, verdes:
 
 Com mock, os seis ficam verdes. Só caem quando alguém executa como usuário real.
 
-## A regra de ouro
+## 🥇 A regra de ouro
 
 **Prove como um usuário, não como o dono do banco.**
 
@@ -35,7 +35,7 @@ passar — e é assim que bug chega em produção.
 - Se um passo **só** passa com a chave de serviço, isso **é o achado**: o gate
   não existe para o usuário real.
 
-## As seis armadilhas do teste verde
+## 🪤 As seis armadilhas do teste verde
 
 Antes de escrever "passou", confirme que não caiu em nenhuma:
 
@@ -54,7 +54,7 @@ Antes de escrever "passou", confirme que não caiu em nenhuma:
 6. **Provar contra arquivo em vez do sistema** — migration antiga e tipo gerado
    mentem. Contrato se confere no catálogo do banco, nunca num `.sql` do repo.
 
-## A saída do verificador
+## 📋 A saída do verificador
 
 ```
 VEREDITO: PROVADO | PARCIAL | NÃO PROVADO
@@ -72,12 +72,12 @@ entre PROVADO e PARCIAL, é PARCIAL.
 
 ---
 
-# A prova vira suíte
+# 🔁 A prova vira suíte
 
 Provar e jogar a prova fora resolve hoje e não protege amanhã. A skill
 `provas-de-regressao` fecha esse buraco.
 
-## Onde fica
+## 📁 Onde fica
 
 `provas/`, na raiz do repositório que **é dono do que a prova exercita** —
 normalmente onde vivem migrations e funções de servidor.
@@ -93,7 +93,7 @@ provas/
   lib.sh  rodar.sh  .env      .env NUNCA commitado
 ```
 
-## O contrato de exit code
+## 🔢 O contrato de exit code
 
 | Código | Significa |
 |---|---|
@@ -103,7 +103,7 @@ provas/
 
 O `2` importa: sem ele, falta de env vira vermelho e o time aprende a ignorar.
 
-## O ciclo
+## ♻️ O ciclo
 
 **Antes** de provar a tarefa nova: `./provas/rodar.sh`. Sempre. Prova antiga
 falhando é achado separado do resultado da tarefa.
@@ -115,7 +115,7 @@ comportamento; listar tabela e ler log é diagnóstico, não prova.
 Prova que não roda mais porque o fluxo sumiu: **reporte, não apague**. Prova
 apagada em silêncio é cobertura perdida sem ninguém saber.
 
-## O que toda prova cobre
+## 🧾 O que toda prova cobre
 
 As mesmas quatro coisas que o plano exige como critério de pronto:
 
@@ -124,7 +124,7 @@ As mesmas quatro coisas que o plano exige como critério de pronto:
 - **o caso sem dado** — o que o sistema devolve quando não existe nada
 - **o contrato** — a RPC ou coluna chamada existe com a assinatura chamada
 
-## Prova de escrita
+## ✏️ Prova de escrita
 
 Vai para `escrita/`, e:
 
@@ -138,12 +138,12 @@ Vai para `escrita/`, e:
 Nunca vira prova, em hipótese nenhuma: cobrança real, saque ou transferência,
 envio de e-mail ou push para público que não seja o usuário efêmero.
 
-## Credencial
+## 🔑 Credencial
 
 Sempre de env, nunca no arquivo. Antes de gravar, confirme que `provas/.env` está
 no `.gitignore`. O script vai para o git; o segredo não.
 
-## Por que isto e não TDD
+## 🤔 Por que isto e não TDD
 
 TDD deixa uma suíte que roda de novo, barata, a cada mudança — é a resposta certa
 para *manter* um bug corrigido. Mas a suíte que o TDD produz é de teste isolado
