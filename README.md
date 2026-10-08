@@ -174,7 +174,7 @@ quando usar cada peça, instalação e um prompt para começar.
 |---|---|---|
 | 💻 | [Código](docs/nichos/codigo.md) | Superpowers · ondas · provas · quality gates · Context7 · Graphify |
 | 🎨 | [Design e UI](docs/nichos/design-ui.md) | shadcn · 21st.dev · Magic UI · Dribbble · Behance · Mobbin · boas práticas |
-| 🎬 | [Vídeo](docs/nichos/video.md) | Remotion · HyperFrames · Higgsfield · Veo/Seedance · ElevenLabs |
+| 🎬 | [Vídeo](docs/nichos/video.md) | Remotion · HyperFrames · claude-video · Higgsfield · Veo/Seedance · ElevenLabs |
 | 🖼️ | [Imagem](docs/nichos/imagem.md) | Nano Banana 2 · Canva · Higgsfield |
 | 🧪 | [Testes e navegador](docs/nichos/testes-navegador.md) | Claude in Chrome · Playwright · agent-browser · DevTools MCP |
 | ✍️ | [Conteúdo e SEO](docs/nichos/conteudo-seo.md) | `seo-geo` · humanizer |
@@ -253,6 +253,7 @@ Ferramentas de terceiros citadas nos nichos pertencem aos seus autores:
 [Superpowers](https://github.com/anthropics/claude-plugins-official) ·
 [Remotion](https://www.remotion.dev) ·
 [HyperFrames](https://github.com/heygen-com/hyperframes) ·
+[claude-video](https://github.com/bradautomates/claude-video) ·
 [inference.sh](https://github.com/inference-sh/skills) ·
 [ElevenLabs](https://github.com/elevenlabs/elevenlabs-mcp) ·
 [Higgsfield](https://higgsfield.ai) ·

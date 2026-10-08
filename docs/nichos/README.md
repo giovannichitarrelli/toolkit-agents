@@ -7,7 +7,7 @@ um prompt para começar.
 |---|---|---|
 | 💻 | [Código](codigo.md) | Superpowers, ondas, provas, quality gates, Context7, Graphify, Supabase |
 | 🎨 | [Design e UI](design-ui.md) | shadcn, 21st.dev, bibliotecas de componente, inspiração, boas práticas |
-| 🎬 | [Vídeo](video.md) | Remotion, HyperFrames, Higgsfield, Veo/Seedance, ElevenLabs |
+| 🎬 | [Vídeo](video.md) | Remotion, HyperFrames, Higgsfield, Veo/Seedance, ElevenLabs, claude-video |
 | 🖼️ | [Imagem](imagem.md) | Nano Banana 2, Canva, Higgsfield, canvas-design |
 | 🧪 | [Testes e navegador](testes-navegador.md) | Claude in Chrome, Playwright, agent-browser, DevTools MCP |
 | ✍️ | [Conteúdo e SEO](conteudo-seo.md) | `seo-geo`, humanizer |
@@ -30,6 +30,7 @@ um prompt para começar.
 | ✨ Vídeo ou imagem gerados por IA | [Higgsfield / Veo](video.md) · [Nano Banana 2](imagem.md) |
 | 📱 Post, carrossel, peça de marca | [Canva](imagem.md) com template |
 | 🎙️ Narração, voz, efeito sonoro | [ElevenLabs](video.md#-instalação) |
+| 👁️ Claude assistir / resumir um vídeo | [claude-video `/watch`](video.md) |
 | ✍️ Artigo de blog | agente `seo-geo` → skill `humanizer` |
 | 📄 Proposta, contrato, deck, planilha | [Documentos](documentos.md) |
 | ⚡ Integrar sistemas sem código | [n8n](automacao.md) |
