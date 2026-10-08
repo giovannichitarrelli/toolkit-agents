@@ -15,6 +15,7 @@ regras para o `.claude/` de cada projeto.
 | 🔓 | [`bloquear-desligar-rls`](../templates/hookify/hookify.bloquear-desligar-rls.local.md) | `DISABLE ROW LEVEL SECURITY` em qualquer arquivo escrito |
 | 🌍 | [`segredo-em-env-publico`](../templates/hookify/hookify.segredo-em-env-publico.local.md) | `NEXT_PUBLIC_`/`VITE_`/`EXPO_PUBLIC_` + `SECRET`/`SERVICE_ROLE`/`PRIVATE`/`PASSWORD`/`WEBHOOK` |
 | 🧪 | [`service-role-em-prova`](../templates/hookify/hookify.service-role-em-prova.local.md) | Service role dentro de `provas/` — prova roda com JWT de usuário |
+| 🗄️ | [`mcp-sql-desligar-rls`](../templates/hookify/hookify.mcp-sql-desligar-rls.local.md) | O mesmo `DISABLE ROW LEVEL SECURITY`, enviado pelo MCP do Supabase (`execute_sql`, `apply_migration`) |
 | 🔑 | [`git-add-env`](../templates/hookify/hookify.git-add-env.local.md) | `git add` de `.env*` (exceto `.env.example`) |
 
 ```
@@ -23,7 +24,11 @@ regras para o `.claude/` de cada projeto.
 
 ```bash
 cp templates/hookify/*.local.md /caminho/do/projeto/.claude/
+echo '.claude/hookify.*.local.md' >> /caminho/do/projeto/.gitignore
 ```
+
+O sufixo `.local.md` é a convenção do hookify para "desta máquina": a fonte da
+verdade é este repositório, e cada projeto recebe uma cópia fora do git.
 
 Efeito imediato, sem reiniciar. `/hookify:list` mostra o que está ativo;
 `/hookify` sem argumento lê a conversa e propõe regra a partir do que você
@@ -34,13 +39,21 @@ corrigiu.
 > `new_text` só lê `Edit`: num `Write` ele vem vazio e a regra nunca dispara.
 > Descoberto testando — a regra parecia certa e passava tudo.
 
-As quatro regras foram testadas no motor do hookify com 9 entradas (bloqueia o
+As cinco regras foram testadas no motor do hookify com 13 entradas (bloqueia o
 caso errado, deixa passar o vizinho legítimo, como `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 e `.env.example`).
 
-> [!NOTE]
-> Hookify cobre `Bash`, `Write` e `Edit`. SQL enviado pelo MCP do Supabase não
-> passa por ele — ali quem segura é o `arquiteto-dados` e o review.
+### 🗄️ SQL pelo MCP
+
+`event: bash` e `event: file` só enxergam `Bash`, `Write` e `Edit`. Para
+ferramenta de MCP a regra precisa de `event: all` + `tool_matcher` com o **nome
+exato** da ferramenta (`mcp__<servidor>__<tool>`), e a condição lê o campo
+`query` direto do input. É o caminho mais perigoso dos três: vai direto ao
+banco, sem arquivo, sem migration versionada, sem review.
+
+O `tool_matcher` assume o servidor chamado `supabase` no `.mcp.json` (e cobre
+também o conector do claude.ai, `claude_ai_Supabase`). Servidor com outro nome
+→ ajuste a linha, senão a regra não dispara e nada avisa.
 
 ## 🛟 Hook seu: falhar aberto
 
