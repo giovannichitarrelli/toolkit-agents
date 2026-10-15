@@ -153,6 +153,7 @@ O passo 🗄️ só entra quando a tarefa toca banco. O 🧪 nunca é opcional �
 | 🌊 | `ondas-paralelas` | Plano em ondas: `Files:`/`Depends-on:`, arquivos disjuntos, e **implementador nunca commita** |
 | 🧪 | `provas-de-regressao` | A prova do verificador vira script re-rodável; pega regressão antes de provar coisa nova |
 | 🚦 | `quality-gates` | Gates de lint com severidade decidida pela contagem real de violações |
+| 🎬 | `video-marca` | Vídeo de marca a partir de um brief com variáveis: 4 formatos (motion de UI, historinha com personagens, texto narrado, explicativo) e narração. Produz pelo [motionmaxxing](https://github.com/Tejashmakwana/motionmaxxing) |
 
 ## <a id="o-guarda-noturna"></a>🌙 O guarda noturna
 

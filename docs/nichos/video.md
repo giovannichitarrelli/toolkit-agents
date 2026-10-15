@@ -22,6 +22,8 @@ usa as duas:
 | 🌀 | [Higgsfield](https://higgsfield.ai) | conector + CLI · generativo | Imagem e vídeo cinematográfico, presets de câmera | ✅ conectado |
 | 🎥 | `ai-video-generation` ([inference.sh](https://github.com/inference-sh/skills)) | skill · generativo | Veo 3.1, Seedance, Wan, OmniHuman (avatar), lipsync, upscale | ✅ instalada |
 | 🎙️ | [ElevenLabs](https://github.com/elevenlabs/elevenlabs-mcp) | conector · áudio | Narração, clonagem de voz, efeito sonoro, transcrição | ✅ conectado |
+| 🎞️ | [motionmaxxing](https://github.com/Tejashmakwana/motionmaxxing) | skill · programático | Motion graphics com runtime próprio (HTML + GSAP, render Chrome → ffmpeg), gates que revisam o próprio render, voz e trilha pela ElevenLabs | ✅ instalada |
+| 🎬 | `video-marca` (deste toolkit) | skill · controle | Brief com variáveis → BRIEF fechado → motionmaxxing. Escolhe o formato e a narração | ✅ instalada |
 | 👁️ | [claude-video](https://github.com/bradautomates/claude-video) (`/watch`) | plugin · análise | Assiste YouTube/arquivo: frames + transcrição, recorte por tempo, motor local ou Gemini | ✅ instalado |
 
 **Remotion ou HyperFrames?** Escolha **um** por projeto. Remotion se o projeto
@@ -39,6 +41,41 @@ instalados com escopo **user** — valem em todos os projetos.
 | `watch@claude-video` | `bradautomates/claude-video` | 1 skill: `watch:watch` — **assistir** e analisar vídeo (frames + transcrição) |
 
 Não existe "skill HyperFrames" para instalar à parte: vem dentro do plugin.
+
+## 🎬 `/video-marca`: um brief, quatro formatos
+
+A skill não renderiza nada: ela **controla**. Lê o pedido, pergunta só o que
+falta (no máximo 2 rodadas), grava um `BRIEF.md` marcando cada variável como
+*[usuário]* ou *[decidido]* e entrega para o motionmaxxing produzir. O que o
+usuário fixou é contrato: o motionmaxxing não troca.
+
+| `LINGUAGEM` | Quando | Quem produz |
+|---|---|---|
+| `motion-ui` (padrão) | o produto funcionando na tela | motionmaxxing |
+| `historinha` | pessoas numa situação que a marca resolve | personagens + motionmaxxing |
+| `texto-narrado` | manifesto, ideia forte, pouca UI | motionmaxxing com locução |
+| `explicativo` | como funciona, passo a passo | `hyperframes:faceless-explainer` |
+
+**Narração** (`VOZ`): o tempo das cenas passa a seguir a fala, a ~2,5 palavras/s
+em pt-BR (30 s ≈ 70 palavras); a trilha abaixa sob a voz e a legenda vai gravada
+no vídeo por padrão. Locução pela ElevenLabs (`voice.py` do motionmaxxing).
+
+**Pessoas na historinha, de graça e sem risco de direito de imagem:**
+
+1. **[Open Peeps](https://www.openpeeps.com/)** (CC0), via `react-peeps`: personagem
+   montado por partes, igual em todas as cenas. O script
+   `formatos/historinha-peeps.cjs` monta as cenas.
+2. **Pexels/Unsplash**: só figurante. A licença proíbe sugerir que a pessoa
+   endossa a marca.
+3. **Geração** (`nano-banana-2`, ~US$ 0,05–0,15 por imagem): quando o estilo
+   precisa ser próprio.
+
+> [!WARNING]
+> **Pinterest só como referência** de pose, enquadramento e clima. A imagem é
+> de terceiro e sem licença, e o rosto de pessoa real em anúncio viola o
+> direito de imagem dela. Pessoa realista gerada por IA exige o rótulo "feito
+> com IA" na Meta e no TikTok, e personagem nunca dá depoimento como se fosse
+> usuário real.
 
 ## 🔁 O pipeline que funciona
 
@@ -83,6 +120,10 @@ npx skills add higgsfield-ai/skills
 # 🧱 HyperFrames — 21 skills de criação de vídeo
 /plugin marketplace add heygen-com/hyperframes
 /plugin install hyperframes@hyperframes
+
+# 🎬 video-marca (deste toolkit) — vem com ./instalar.sh --aplicar
+# 🎞️ motionmaxxing — o motor que a video-marca chama
+#   git clone https://github.com/Tejashmakwana/motionmaxxing ~/.claude/skills/motionmaxxing
 
 # 👁️ claude-video — /watch
 /plugin marketplace add bradautomates/claude-video
