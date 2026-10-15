@@ -79,7 +79,7 @@ Invoque a skill `motionmaxxing` passando o BRIEF inteiro como argumento e siga-a
 - **ENERGIA → números.** 8-10: palavras 4-10 f, emoji/adesivo com pop, chicote entre cenas, um efeito de partícula no máximo em 3 momentos. 4-7: palavras 8-15 f, mergulhos, sem partícula salvo pedido. 1-3: cortes longos, câmera lenta, tipografia contida.
 - **TELAS_REAIS:** captura real > reconstrução pelo design system > desenho. Toda reconstrução é declarada na entrega. Nunca usar imagem de terceiro (flyer, logo de outra marca) sem direito.
 - **Formato:** siga o arquivo da LINGUAGEM; as regras dele valem por cima das do motionmaxxing (ex.: personagem gerado é permitido em `historinha`, declarado).
-- **Voz e trilha:** com `ELEVENLABS_API_KEY`, `voice.py` gera locução, música e SFX (`formatos/narracao.md`); com voz, o tempo segue a fala. Sem chave: trilha sintetizada no gênero/BPM pedido, com cortes no grid de compasso, e dizer que é sintetizada.
+- **Voz e trilha:** voz da biblioteca exige o **conector ElevenLabs** ligado na sessão (a chave não serve; ver `formatos/narracao.md`). Com `ELEVENLABS_API_KEY`, `voice.py` gera locução com voz pronta, música e SFX (`formatos/narracao.md`); com voz, o tempo segue a fala. Sem chave: trilha sintetizada no gênero/BPM pedido, com cortes no grid de compasso, e dizer que é sintetizada.
 - **VERSOES ≥ 2:** variar só a variável indicada; abrir o blind review do motionmaxxing para a escolha; registrar a escolha em `taste/verdicts.md`.
 
 ## 7. Entregar
