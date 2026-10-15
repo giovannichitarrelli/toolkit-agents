@@ -46,7 +46,7 @@ CENAS:
   1. [ação na tela] | texto: "[...]" | tempo: [s]
   2. ...
 PERSONAGENS:  [só historinha — até 3: idade · estilo · roupa · traço · voz]
-ESTILO_PERSONAGEM:[ilustrado | 3D estilizado | quadrinho | fotorrealista (exige rótulo de IA)]
+ESTILO_PERSONAGEM:[real (foto Pexels/Unsplash) | gráfico: ilustrado | 3D estilizado | quadrinho]  ← sempre perguntado em historinha
 FIO_CONDUTOR: [objeto/caso que atravessa tudo | nenhum]
 MOMENTO_HEROI:[cena principal]
 CTA_FINAL:    [frases → logo]

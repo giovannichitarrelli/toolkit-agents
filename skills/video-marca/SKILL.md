@@ -27,7 +27,7 @@ Leia o arquivo do formato escolhido **antes** de perguntar. Qualquer `VOZ` ≠ s
 ## 2. Perguntar só o que falta (no máximo 2 rodadas)
 
 As obrigatórias — sem elas não comece: **MARCA/FONTE_DA_MARCA, OBJETIVO, LINGUAGEM, DURACAO+FORMATO, TIPO+ENERGIA, CTA_FINAL**.
-As de peso alto — pergunte se faltarem: **VOZ** (se SOM = com som), **VELOCIDADE, MOMENTO_HEROI, TELAS_REAIS, TRILHA, INSTRUCAO_FINAL** (esta com a opção "sem instrução final"); em `historinha`, também **PERSONAGENS** e **ESTILO_PERSONAGEM**.
+As de peso alto — pergunte se faltarem: **VOZ** (se SOM = com som), **VELOCIDADE, MOMENTO_HEROI, TELAS_REAIS, TRILHA, INSTRUCAO_FINAL** (esta com a opção "sem instrução final"); em `historinha`, também **PERSONAGENS**. Em `historinha`, **ESTILO_PERSONAGEM é sempre perguntado**, mesmo que o pedido pareça responder: **real** (foto de banco gratuito) ou **gráfico** (ilustrado).
 Todo o resto: decida pelo padrão abaixo, sem perguntar.
 
 Use a ferramenta de perguntas (até 4 por chamada, opções concretas, a recomendada primeiro). Uma rodada para as obrigatórias, no máximo mais uma para as de peso alto. Nunca pergunte o que dá para descobrir lendo o projeto ou o site.
@@ -39,7 +39,7 @@ Use a ferramenta de perguntas (até 4 por chamada, opções concretas, a recomen
 | LINGUAGEM | motion-ui (se o pedido não falar de pessoas, voz ou explicação) |
 | VOZ | sem · `texto-narrado` → locução · `historinha` → locução (personagem só se pedido) |
 | LEGENDA | com voz → gravada no vídeo · sem voz → não |
-| ESTILO_PERSONAGEM | ilustrado nas cores da marca |
+| ESTILO_PERSONAGEM | sem padrão em `historinha`: sempre perguntar real × gráfico |
 | FORMATO | 9:16 |
 | DURACAO | 30 s (teaser 15 s) |
 | ENERGIA | animado/jovem → 8 · sério → 4 · emocional → 3 |
@@ -87,7 +87,7 @@ Invoque a skill `motionmaxxing` passando o BRIEF inteiro como argumento e siga-a
 Copie o MP4 para SAIDA e responda curto, em pt-BR:
 1. caminho do arquivo;
 2. roteiro em tabela (tempo · o que acontece);
-3. o que foi **decidido** por você, o que é **real vs reconstruído vs gerado** (imagens de IA com prompt) e as afirmações da INSTRUCAO_FINAL não conferidas; com pessoa realista gerada, o aviso de rótulo "feito com IA" para Meta/TikTok;
+3. o que foi **decidido** por você, o que é **real vs reconstruído vs gerado** (imagens de IA com prompt) e as afirmações da INSTRUCAO_FINAL não conferidas; com pessoa real, os créditos das fotos (`film/cast/creditos.md`);
 4. o que conferir (ouvir a trilha; o que o /watch não vê).
 
 Ao final, ofereça ajustar por variável ("quer ENERGIA 6? CTA diferente?") — o próximo pedido pode ser só a variável que muda.
