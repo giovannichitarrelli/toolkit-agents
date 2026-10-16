@@ -138,6 +138,7 @@ O passo 🗄️ só entra quando a tarefa toca banco. O 🧪 nunca é opcional �
 | 🔍 | `revisor-codigo` | médio | Bug, furo de fluxo, drift de contrato, hardcode |
 | 🛡️ | `revisor-seguranca` | médio | Auditoria antes de publicar |
 | 🧪 | `verificador` | médio | **Executa** o fluxo e volta com prova. Fecha a tarefa |
+| 🏗️ | `infra` | médio | Capacidade e custo: memória, CPU, quotas, plano × config, pico, teste de carga. Recomenda com gatilho, qualidade primeiro |
 | 🤝 | `socio-produto` | médio | Pressiona a ideia antes de virar código |
 | 🔎 | `seo-geo` | médio | SEO e otimização para assistentes de IA |
 | 🐕 | `busca` | **barato** | Localiza código. Substitui `Explore` e `general-purpose` |

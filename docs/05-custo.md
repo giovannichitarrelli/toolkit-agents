@@ -7,7 +7,7 @@ Todo agente tem `model:` no frontmatter. Nenhum herda.
 ```
 alto    executor                      só ele
 médio   planejador, arquiteto-dados, revisores, verificador,
-        socio-produto, seo-geo
+        infra, socio-produto, seo-geo
 barato  busca
 ```
 

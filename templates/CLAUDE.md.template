@@ -23,6 +23,7 @@ conselho, conteúdo — roda num tier intermediário. Busca roda no barato.
 | `revisor-codigo` | médio | Bug, furo de fluxo, drift de contrato, UI fora do design system, número hardcoded |
 | `revisor-seguranca` | médio | Audita antes de commit/deploy |
 | `verificador` | médio | **Executa** o fluxo e volta com prova. Não lê código: roda. Fecha a tarefa |
+| `infra` | médio | Capacidade e custo de infraestrutura. Entra antes de campanha/lançamento, em alerta de quota/memória e na revisão mensal. Qualidade primeiro; mede e recomenda com gatilho, não aplica |
 | `socio-produto` | médio | Pressiona ideia/decisão de negócio como sócio |
 | `busca` | **barato** | Localiza código/arquivo/símbolo. Substitui `Explore` e `general-purpose` |
 
